@@ -10,7 +10,8 @@ var datosEmpresa = {
     'Correo':'',
     'Rubro':'',
     'Direccion':'',
-    'Telefono':''
+    'Telefono':'',
+    'done':false
 }
 
 
@@ -47,6 +48,36 @@ router.post('/new', function(req, res, next){
         return res.status(200).json(_thingsData);
     });   
 }); // Metodo POST
+
+router.put('/done/:thingId', function(req, res, next){
+    var _thingId = req.params.thingId;
+    var _thingUpds = req.body;
+    var _thingUpdated = null;
+    var newData =data.map(
+        function(doc, i){
+            if(doc._id == _thingId){                
+                _thingUpdated = Object.assign(
+                    {}, 
+                    doc, 
+                    {"done":true},
+                    _thingUpds
+                    );
+                return _thingUpdated;
+            }
+            return doc;
+        }        
+    ); 
+
+    data = newData;
+
+    fileModel.write(data, function(err){
+        if(err){ 
+            console.log(err);
+            return res.status(500),json({'error': 'Error al guardar data'});
+        }
+        return res.status(200).json(_thingUpdated);
+    });   
+}); // Metodo PUT
 
 
 fileModel.read(function(err, filedata){
