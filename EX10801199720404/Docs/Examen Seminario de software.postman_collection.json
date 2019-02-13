@@ -1,0 +1,165 @@
+{
+	"info": {
+		"_postman_id": "bb9ac90f-1740-4c65-ac96-183f2a68ed14",
+		"name": "Examen Seminario de software",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:3000/api/things/new",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "Empresa",
+							"value": "UNICAH",
+							"type": "text"
+						},
+						{
+							"key": "Correo",
+							"value": "unicah@ejemplo.com",
+							"type": "text"
+						},
+						{
+							"key": "Rubro",
+							"value": "Educacion",
+							"type": "text"
+						},
+						{
+							"key": "Direccion",
+							"value": "Aldea las Casitas",
+							"type": "text"
+						},
+						{
+							"key": "Telefono",
+							"value": "2222-2222",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/things/new",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"things",
+						"new"
+					]
+				},
+				"description": "Metodo POST"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/things",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/things",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"things"
+					]
+				},
+				"description": "Metodo GET"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/things/done/b7c86c6c-686c-489d-81d1-28dfe9970e1b",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "Correo",
+							"value": "unicah123@ejemplo.com",
+							"type": "text"
+						},
+						{
+							"key": "Telefono",
+							"value": "8888-8888",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/things/done/b7c86c6c-686c-489d-81d1-28dfe9970e1b",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"things",
+						"done",
+						"b7c86c6c-686c-489d-81d1-28dfe9970e1b"
+					]
+				},
+				"description": "Metodo PUT"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/things/delete/41b52f5f-754b-4880-8c82-755b603cd72a",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/things/delete/41b52f5f-754b-4880-8c82-755b603cd72a",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"things",
+						"delete",
+						"41b52f5f-754b-4880-8c82-755b603cd72a"
+					]
+				},
+				"description": "Metodo DELETE"
+			},
+			"response": []
+		}
+	]
+}

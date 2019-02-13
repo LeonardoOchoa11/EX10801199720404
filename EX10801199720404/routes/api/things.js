@@ -5,7 +5,7 @@ var fileModel = require('./examenmodel');
 var data = null;
 
 var datosEmpresa = {
-    'RTN':'',
+    '_RTN':'',
     'Empresa':'',
     'Correo':'',
     'Rubro':'',
@@ -35,7 +35,7 @@ router.get('/', function(req, res, next){
 router.post('/new', function(req, res, next){
     
     var _thingsData = Object.assign({}, datosEmpresa, req.body);
-    _thingsData._id = uuidv4();
+    _thingsData._RTN = uuidv4();
     if(!data){
         data = [];
     }
@@ -50,7 +50,7 @@ router.post('/new', function(req, res, next){
 }); // Metodo POST
 
 router.put('/done/:thingId', function(req, res, next){
-    var _thingId = req.params.thingId;
+    var _thingId = req.params._RTN;
     var _thingUpds = req.body;
     var _thingUpdated = null;
     var newData =data.map(
@@ -78,6 +78,27 @@ router.put('/done/:thingId', function(req, res, next){
         return res.status(200).json(_thingUpdated);
     });   
 }); // Metodo PUT
+
+router.delete('/delete/:thingId', function(req, res, next){
+    var _thingId = req.params.thingId;        
+    var newData =data.filter(
+        function(doc, i){
+            if(doc._id == _thingId){                
+                return false;
+            }
+            return true;
+        }        
+    );
+
+    data = newData;
+    fileModel.write(data, function(err){
+        if(err){ 
+            console.log(err);
+            return res.status(500),json({'error': 'Error al eliminar data'});
+        }
+        return res.status(200).json({"delete" : _thingId});
+    });  
+}); // Metodo DELETE
 
 
 fileModel.read(function(err, filedata){
